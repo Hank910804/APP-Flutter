@@ -9,6 +9,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:dio/dio.dart';
 
 TextEditingController pust_string_controller = TextEditingController();
 TextEditingController pust_string_controller01 = TextEditingController();
@@ -106,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width - 20,
+                height: MediaQuery.of(context).size.height/8,
                 child: TextField(
                     controller: pust_string_controller,
                     cursorColor: Colors.blue,
@@ -121,8 +123,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         isDense: true,
                         filled: true,
                         fillColor: Colors.white,
+                        suffixIcon: pust_string_controller.text != '' ? const Icon(Icons.done,) : const Icon(Icons.clear),
                         //counterText: '',
-                        errorText: pust_string_controller.text == '' ? 'email不得為空' : '',  //判斷是否有錯誤訊息
+                        errorText: pust_string_controller.text == '' ? 'Email不得為空' : null,  //判斷是否有錯誤訊息
+                        errorStyle: TextStyle(fontSize: 15),
                         //錯誤代碼要判斷
                         border: OutlineInputBorder(
                             gapPadding: 0,

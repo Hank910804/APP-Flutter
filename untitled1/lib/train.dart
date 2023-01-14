@@ -9,6 +9,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:dio/dio.dart';
 
 TextEditingController pust_string_controller = TextEditingController();
 TextEditingController pust_string_controller01 = TextEditingController();
@@ -91,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             'lib/image/talk.png',
                           ),
                         ),
-                        Text(
+                        const Text(
                           '表達練習',
                           style: TextStyle(
                             fontSize: 40
