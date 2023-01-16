@@ -10,16 +10,13 @@ import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:dio/dio.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-TextEditingController pust_string_controller = TextEditingController();
-TextEditingController pust_string_controller01 = TextEditingController();
 int list = 1;
 
 void main() {
   runApp(const MyApp());
-  File('file.txt').readAsString().then((String contents) {
-    print(contents);
-  });
 }
 
 class MyApp extends StatelessWidget {
@@ -44,6 +41,100 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  TextEditingController Email = TextEditingController();
+
+  late bool error, sending, success,readmail;
+  late String msg;
+
+  String urlmail = "http://192.168.56.1/appcode/readinfo.php";
+  String urlsend = "http://192.168.56.1/appcode/write.php";
+
+  //本地不能使用 http://localhost/
+  //使用本地 IP 地址或 URL
+  //Windows 使用 ipconfig ；在 Linux 上使用 ip a 取得 IP 地址
+
+  @override
+  //初始化參數
+  void initState() {
+    error = false;
+    sending = false;
+    success = false;
+    msg = "";
+    readmail = false;
+    super.initState();
+  }
+
+  Future<void> Readmail() async{
+    var res = await http.post(Uri.parse(urlmail), body: {
+      "Email": Email.text,
+    });
+
+    if (res.statusCode == 200) {
+      print(res.body);
+      var data = json.decode(res.body); //將json解碼為陣列形式
+      if (data["error"]) {
+        //錯誤的話
+        setState(() {
+          //從 server 收到錯誤時刷新 UI 介面顯示文字
+          sending = false;
+          error = true;
+          readmail = data["mail"]; //來自server 的錯誤消息
+        });
+      } else {
+        //寫入成功後，清空輸入框的值
+        Email.text = "";
+
+        setState(() {
+          sending = false;
+          success = true; //使用 setState 設定success為成功狀態(true)並刷新 UI 介面顯示文字
+        });
+      }
+    } else {
+      //存在錯誤的話
+      setState(() {
+        error = true;
+        msg = "Error!";
+        sending = false; //標記錯誤並使用 setState 刷新 UI 介面顯示文字
+      });
+    }
+  }
+
+  Future<void> sendData() async {
+    //發送帶有標題data的post request
+    var res = await http.post(Uri.parse(urlsend), body: {
+      "Email": Email.text,
+    });
+
+    if (res.statusCode == 200) {
+      print(res.body);
+      var data = json.decode(res.body); //將json解碼為陣列形式
+      if (data["error"]) {
+        //錯誤的話
+        setState(() {
+          //從 server 收到錯誤時刷新 UI 介面顯示文字
+          sending = false;
+          error = true;
+          msg = data["message"]; //來自server 的錯誤消息
+        });
+      } else {
+        //寫入成功後，清空輸入框的值
+        Email.text = "";
+
+        setState(() {
+          sending = false;
+          success = true; //使用 setState 設定success為成功狀態(true)並刷新 UI 介面顯示文字
+        });
+      }
+    } else {
+      //存在錯誤的話
+      setState(() {
+        error = true;
+        msg = "Error!";
+        sending = false; //標記錯誤並使用 setState 刷新 UI 介面顯示文字
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,24 +200,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: MediaQuery.of(context).size.width - 20,
                     height: MediaQuery.of(context).size.height/8,
                     child: TextField(
-                        controller: pust_string_controller,
-                        cursorColor: Colors.blue,
-                        cursorRadius: const Radius.circular(4.0),
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 25.0,
-                        ),
-                        textAlign: TextAlign.left,
-                        keyboardType: TextInputType.text,
+                        controller: Email,
                         decoration: InputDecoration(
-                            hintText: 'Email',
-                            isDense: true,
-                            filled: true,
-                            fillColor: Colors.white,
-                            suffixIcon: pust_string_controller.text != '' ? const Icon(Icons.done,) : const Icon(Icons.clear),
+                            labelText: "Email：",
+                              labelStyle: TextStyle(fontSize: 15),
+                            // hintText: 'Email',
+                            // isDense: true,
+                            // filled: true,
+                            // fillColor: Colors.white,
+                            suffixIcon: Email.text != '' ? const Icon(Icons.done,) : const Icon(Icons.clear),
                             //counterText: '',
-                            errorText: pust_string_controller.text == '' ? 'Email不得為空' : null,  //判斷是否有錯誤訊息
-                             errorStyle: TextStyle(fontSize: 15),
+                            // errorText: Email.text != '' ? null : '請輸入電子信箱',  //判斷是否有錯誤訊息
+                            //  errorStyle: TextStyle(fontSize: 15),
                             //錯誤代碼要判斷
                             border: const OutlineInputBorder(
                                 gapPadding: 0,
@@ -142,22 +227,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      String? encodeQueryParameters(Map<String, String> params) {
-                        return params.entries
-                            .map((MapEntry<String, String> e) =>
-                        '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                            .join('&');
-                      }
-                      final Uri emailLaunchUri = Uri(
-                        scheme: 'mailto',
-                        path: 'hank0910804@gmail.com',
-                        query: encodeQueryParameters(<String, String>{
-                          'subject': '寄送信件測試',
-                          'body': '您好, 寄送信件測試。'
-                        }
-                        ),
-                      );
-                      launchUrl(emailLaunchUri);
+                      //按下按鈕後設定sending為true
+                      setState(() {
+                        sending = true;
+                      });
+                      Readmail();
+                      readmail == true ? sendData() : null;
                       },
                     child: Container(
                       alignment: Alignment.center,
@@ -168,7 +243,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: Colors.blue,
                           border: Border.all(color: Colors.blue)
                       ),
-                      child: const Text('寄送',
+                      child: Text(readmail == true ? '寄送': '信箱不存在',
                           style: TextStyle(fontSize: 30, color: Colors.black)),
                     ),
                   ),
