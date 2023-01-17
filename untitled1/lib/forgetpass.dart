@@ -41,12 +41,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int info = 0;
   TextEditingController Email = TextEditingController();
 
-  late bool error, sending, success,readmail;
+  late bool error, sending, success;
   late String msg;
 
-  String urlmail = "http://192.168.56.1/appcode/readinfo.php";
   String urlsend = "http://192.168.56.1/appcode/write.php";
 
   //本地不能使用 http://localhost/
@@ -60,43 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     sending = false;
     success = false;
     msg = "";
-    readmail = false;
     super.initState();
-  }
-
-  Future<void> Readmail() async{
-    var res = await http.post(Uri.parse(urlmail), body: {
-      "Email": Email.text,
-    });
-
-    if (res.statusCode == 200) {
-      print(res.body);
-      var data = json.decode(res.body); //將json解碼為陣列形式
-      if (data["error"]) {
-        //錯誤的話
-        setState(() {
-          //從 server 收到錯誤時刷新 UI 介面顯示文字
-          sending = false;
-          error = true;
-          readmail = data["mail"]; //來自server 的錯誤消息
-        });
-      } else {
-        //寫入成功後，清空輸入框的值
-        Email.text = "";
-
-        setState(() {
-          sending = false;
-          success = true; //使用 setState 設定success為成功狀態(true)並刷新 UI 介面顯示文字
-        });
-      }
-    } else {
-      //存在錯誤的話
-      setState(() {
-        error = true;
-        msg = "Error!";
-        sending = false; //標記錯誤並使用 setState 刷新 UI 介面顯示文字
-      });
-    }
   }
 
   Future<void> sendData() async {
@@ -117,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
           msg = data["message"]; //來自server 的錯誤消息
         });
       } else {
+        error = false;
         //寫入成功後，清空輸入框的值
         Email.text = "";
 
@@ -198,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width - 20,
-                    height: MediaQuery.of(context).size.height/8,
+                    height: MediaQuery.of(context).size.height/10,
                     child: TextField(
                         controller: Email,
                         decoration: InputDecoration(
@@ -227,12 +192,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TextButton(
                     onPressed: () {
+                      info = 1;
                       //按下按鈕後設定sending為true
                       setState(() {
                         sending = true;
                       });
-                      Readmail();
-                      readmail == true ? sendData() : null;
+                      sendData();
                       },
                     child: Container(
                       alignment: Alignment.center,
@@ -243,8 +208,23 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: Colors.blue,
                           border: Border.all(color: Colors.blue)
                       ),
-                      child: Text(readmail == true ? '寄送': '信箱不存在',
+                      child: const Text('寄送',
                           style: TextStyle(fontSize: 30, color: Colors.black)),
+                    ),
+                  ),
+
+                  Container(
+                    width: MediaQuery.of(context).size.width - 20,
+                    height: MediaQuery.of(context).size.height/8,
+                    child: Text(
+                      info == 0 ?
+                        '' : error == false ?
+                          '信箱驗證成功，密碼已傳送，請至信箱內收取' : '查無綁定此信箱的帳戶，請確認輸入信箱是否正確',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.black54,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ],
