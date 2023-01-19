@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
           title: const Text(
-            "語言訓練",
+            "語言訓練項目",
             style: TextStyle(
             ),
           ),
