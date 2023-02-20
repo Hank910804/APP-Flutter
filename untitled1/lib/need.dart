@@ -30,455 +30,489 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: NeedPage1(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class NeedPage1 extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _NeedPage1 createState() => _NeedPage1();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _NeedPage1 extends State<NeedPage1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(
-              Icons.keyboard_return,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyHomePage()),
-              );
-            },
-          ),
-          title: const Text(
-            "生理需求",
-            style: TextStyle(),
+      backgroundColor: Colors.orangeAccent.shade100,
+      resizeToAvoidBottomInset: false,
+      body: Center(
+        child: Container(
+          height: MediaQuery.of(context).size.height * 5 / 6,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width / 4,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: Image.asset(
+                      'lib/image/food.png',
+                    ),
+                  ),
+                  const Text(
+                    '需求表達',
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 100,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage1()),
+                        );
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/food.png',
+                            ),
+                          ),
+                          const Text(
+                            '肚子餓',
+                            style: TextStyle(fontSize: 30),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage1()),
+                        );
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/water.png',
+                            ),
+                          ),
+                          const Text(
+                            '口渴',
+                            style: TextStyle(fontSize: 30),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage1()),
+                        );
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/pee.png',
+                            ),
+                          ),
+                          const Text(
+                            '小便',
+                            style: TextStyle(fontSize: 30),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 100,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage1()),
+                        );
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/peo.png',
+                            ),
+                          ),
+                          const Text(
+                            '大便',
+                            style: TextStyle(fontSize: 30),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage1()),
+                        );
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/peo.png',
+                            ),
+                          ),
+                          const Text(
+                            '換尿布',
+                            style: TextStyle(fontSize: 30),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage1()),
+                        );
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/peo.png',
+                            ),
+                          ),
+                          const Text(
+                            '翻身',
+                            style: TextStyle(fontSize: 30),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height / 13,
+                width: MediaQuery.of(context).size.width / 2,
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                    color: Colors.deepOrange.shade800,
+                    border: Border.all(color: Colors.deepOrange.shade800)),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => NeedPage2()),
+                    );
+                  },
+                  child: Text(
+                      '下一頁',
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-        //backgroundColor:Colors.greenAccent,
-        resizeToAvoidBottomInset: false,
-        body: Center(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            alignment: Alignment.center,
-            child: ListView.builder(
-                itemCount: list.abs(),
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height / 100,
-                      ),
-                      Row(
+      ),
+    );
+  }
+}
+
+class NeedPage2 extends StatefulWidget {
+  @override
+  _NeedPage2 createState() => _NeedPage2();
+}
+
+class _NeedPage2 extends State<NeedPage2> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.orangeAccent.shade100,
+      resizeToAvoidBottomInset: false,
+      body: Center(
+        child: Container(
+          height: MediaQuery.of(context).size.height * 5 / 6,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width / 4,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: Image.asset(
+                      'lib/image/food.png',
+                    ),
+                  ),
+                  const Text(
+                    '需求表達',
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 100,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage2()),
+                        );
+                      },
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: (MediaQuery.of(context).size.width - 40) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(10.0)),
-                                color: Colors.yellowAccent.shade100,
-                                border: Border.all(color: Colors.black38)),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
-                                );
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width:MediaQuery.of(context).size.width / 4,
-                                    height: MediaQuery.of(context).size.height / 10,
-                                    child: Image.asset(
-                                      'lib/image/food.png',
-                                    ),
-                                  ),
-                                  const Text(
-                                    '肚子餓',
-                                    style: TextStyle(fontSize: 30),
-                                  )
-                                ],
-                              ),
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/food.png',
                             ),
                           ),
-                          Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: (MediaQuery.of(context).size.width - 40) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(10.0)),
-                                color: Colors.yellowAccent.shade100,
-                                border: Border.all(color: Colors.black38)),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
-                                );
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width:MediaQuery.of(context).size.width / 4,
-                                    height: MediaQuery.of(context).size.height / 10,
-                                    child: Image.asset(
-                                      'lib/image/water.png',
-                                    ),
-                                  ),
-                                  const Text(
-                                    '口渴',
-                                    style: TextStyle(fontSize: 30),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                          const Text(
+                            '很熱',
+                            style: TextStyle(fontSize: 30),
+                          )
                         ],
                       ),
-
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height / 100,
-                      ),
-
-                      Row(
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage2()),
+                        );
+                      },
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: (MediaQuery.of(context).size.width - 40) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                const BorderRadius.all(Radius.circular(10.0)),
-                                color: Colors.lightGreenAccent.shade100,
-                                border: Border.all(color: Colors.black38)),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
-                                );
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width / 4,
-                                    height: MediaQuery.of(context).size.height / 10,
-                                    child: Image.asset(
-                                      'lib/image/pee.png',
-                                    ),
-                                  ),
-                                  const Text(
-                                    '小便',
-                                    style: TextStyle(fontSize: 30),
-                                  )
-                                ],
-                              ),
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/water.png',
                             ),
                           ),
-
-                          Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: (MediaQuery.of(context).size.width - 40) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                const BorderRadius.all(Radius.circular(10.0)),
-                                color: Colors.lightGreenAccent.shade100,
-                                border: Border.all(color: Colors.black38)),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
-                                );
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width / 4,
-                                    height: MediaQuery.of(context).size.height / 10,
-                                    child: Image.asset(
-                                      'lib/image/peo.png',
-                                    ),
-                                  ),
-                                  const Text(
-                                    '大便',
-                                    style: TextStyle(fontSize: 30),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                          const Text(
+                            '很冷',
+                            style: TextStyle(fontSize: 30),
+                          )
                         ],
                       ),
-
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height / 100,
-                      ),
-
-                      Row(
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage2()),
+                        );
+                      },
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: (MediaQuery.of(context).size.width - 40) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                const BorderRadius.all(Radius.circular(10.0)),
-                                color: Colors.orangeAccent.shade100,
-                                border: Border.all(color: Colors.black38)),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
-                                );
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width / 4,
-                                    height: MediaQuery.of(context).size.height / 10,
-                                    child: const Icon(
-                                      Icons.psychology_outlined,
-                                      size: 60,
-                                      color: Colors.black54,
-                                    ),
-                                  ),
-                                  const Text(
-                                    '換尿布',
-                                    style: TextStyle(fontSize: 30),
-                                  )
-                                ],
-                              ),
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/pee.png',
                             ),
                           ),
-                          Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: (MediaQuery.of(context).size.width - 40) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                const BorderRadius.all(Radius.circular(10.0)),
-                                color: Colors.orangeAccent.shade100,
-                                border: Border.all(color: Colors.black38)),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
-                                );
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width / 4,
-                                    height: MediaQuery.of(context).size.height / 10,
-                                    child: const Icon(
-                                      Icons.psychology_outlined,
-                                      size: 60,
-                                      color: Colors.black54,
-                                    ),
-                                  ),
-                                  const Text(
-                                    '翻身',
-                                    style: TextStyle(fontSize: 30),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                          const Text(
+                            '頭暈',
+                            style: TextStyle(fontSize: 30),
+                          )
                         ],
                       ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height / 100,
-                      ),
-
-                      Row(
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 100,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage2()),
+                        );
+                      },
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: (MediaQuery.of(context).size.width - 40) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                const BorderRadius.all(Radius.circular(10.0)),
-                                color: Colors.purple.shade100,
-                                border: Border.all(color: Colors.black38)),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
-                                );
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width / 4,
-                                    height: MediaQuery.of(context).size.height / 10,
-                                    child: const Icon(
-                                      Icons.psychology_outlined,
-                                      size: 60,
-                                      color: Colors.black54,
-                                    ),
-                                  ),
-                                  const Text(
-                                    '很冷',
-                                    style: TextStyle(fontSize: 30),
-                                  )
-                                ],
-                              ),
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/peo.png',
                             ),
                           ),
-                          Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: (MediaQuery.of(context).size.width - 40) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                const BorderRadius.all(Radius.circular(10.0)),
-                                color: Colors.purple.shade100,
-                                border: Border.all(color: Colors.black38)),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
-                                );
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width / 4,
-                                    height: MediaQuery.of(context).size.height / 10,
-                                    child: const Icon(
-                                      Icons.psychology_outlined,
-                                      size: 60,
-                                      color: Colors.black54,
-                                    ),
-                                  ),
-                                  const Text(
-                                    '很熱',
-                                    style: TextStyle(fontSize: 30),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                          const Text(
+                            '頭痛',
+                            style: TextStyle(fontSize: 30),
+                          )
                         ],
                       ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height / 100,
-                      ),
-
-                      Row(
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage2()),
+                        );
+                      },
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: (MediaQuery.of(context).size.width - 40) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                const BorderRadius.all(Radius.circular(10.0)),
-                                color: Colors.tealAccent.shade100,
-                                border: Border.all(color: Colors.black38)),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
-                                );
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width / 4,
-                                    height: MediaQuery.of(context).size.height / 10,
-                                    child: const Icon(
-                                      Icons.psychology_outlined,
-                                      size: 60,
-                                      color: Colors.black54,
-                                    ),
-                                  ),
-                                  const Text(
-                                    '不舒服',
-                                    style: TextStyle(fontSize: 30),
-                                  )
-                                ],
-                              ),
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/peo.png',
                             ),
                           ),
-                          Container(
-                            height: MediaQuery.of(context).size.height / 5,
-                            width: (MediaQuery.of(context).size.width - 40) / 2,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                const BorderRadius.all(Radius.circular(10.0)),
-                                color: Colors.tealAccent.shade100,
-                                border: Border.all(color: Colors.black38)),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
-                                );
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Container(
-                                    width: MediaQuery.of(context).size.width / 4,
-                                    height: MediaQuery.of(context).size.height / 10,
-                                    child: const Icon(
-                                      Icons.psychology_outlined,
-                                      size: 60,
-                                      color: Colors.black54,
-                                    ),
-                                  ),
-                                  const Text(
-                                    '散步',
-                                    style: TextStyle(fontSize: 30),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
+                          const Text(
+                            '腹痛',
+                            style: TextStyle(fontSize: 30),
+                          )
                         ],
                       ),
-
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height / 100,
+                    ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height / 5,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => NeedPage2()),
+                        );
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width / 4,
+                            height: MediaQuery.of(context).size.height / 10,
+                            child: Image.asset(
+                              'lib/image/peo.png',
+                            ),
+                          ),
+                          const Text(
+                            '下床',
+                            style: TextStyle(fontSize: 30),
+                          )
+                        ],
                       ),
-                    ],
-                  );
-                }),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height / 13,
+                width: MediaQuery.of(context).size.width / 2,
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                    color: Colors.deepOrange.shade800,
+                    border: Border.all(color: Colors.deepOrange.shade800)),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => NeedPage1()),
+                    );
+                  },
+                  child: Text(
+                    '上一頁',
+                    style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.white
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

@@ -47,128 +47,136 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(
-              Icons.keyboard_return,
-            ),
-            onPressed: (){
-              Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MyHomePage()),
-              );
-            },
-          ),
-          title: const Text(
-            "語言訓練項目",
-            style: TextStyle(
-            ),
-          ),
-        ),
         backgroundColor:Colors.orange.shade50,
         resizeToAvoidBottomInset: false,
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(
-                  onPressed: (){
-                    Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => MyHomePage()),
-                    );
-                  },
-                  child: Container(
-                    height: MediaQuery.of(context).size.height/5,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                        color: Colors.yellowAccent.shade100,
-                        border: Border.all(color:Colors.black38)
-                    ),
-                    child: Row(
+              Container(
+                height: MediaQuery.of(context).size.height * 5 / 6,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width/4,
+                          width: MediaQuery.of(context).size.width / 4,
+                          height: MediaQuery.of(context).size.height / 10,
                           child: Image.asset(
-                            'lib/image/talk.png',
+                            'lib/image/food.png',
                           ),
                         ),
                         const Text(
-                          '表達練習',
-                          style: TextStyle(
-                            fontSize: 40
-                          ),
-                        )
+                          '語言訓練',
+                          style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
-                  ),
-              ),
+                    TextButton(
+                        onPressed: (){
+                          Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => MyHomePage()),
+                          );
+                        },
+                        child: Container(
+                          height: MediaQuery.of(context).size.height/5,
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                              color: Colors.yellowAccent.shade100,
+                              border: Border.all(color:Colors.black38)
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width/4,
+                                child: Image.asset(
+                                  'lib/image/talk.png',
+                                ),
+                              ),
+                              const Text(
+                                '命名練習',
+                                style: TextStyle(
+                                  fontSize: 40
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                    ),
 
-              TextButton(
-                onPressed: (){
-                  Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyHomePage()),
-                  );
-                },
-                child: Container(
-                  height: MediaQuery.of(context).size.height/5,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                      color: Colors.lightGreenAccent.shade100,
-                      border: Border.all(color:Colors.black38)
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width/4,
-                        child: Image.asset(
-                          'lib/image/read.png',
+                    TextButton(
+                      onPressed: (){
+                        Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => MyHomePage()),
+                        );
+                      },
+                      child: Container(
+                        height: MediaQuery.of(context).size.height/5,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                            color: Colors.lightGreenAccent.shade100,
+                            border: Border.all(color:Colors.black38)
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width/4,
+                              child: Image.asset(
+                                'lib/image/read.png',
+                              ),
+                            ),
+                            const Text(
+                              '覆誦練習',
+                              style: TextStyle(
+                                  fontSize: 40
+                              ),
+                            )
+
+                          ],
                         ),
                       ),
-                      const Text(
-                        '閱讀練習',
-                        style: TextStyle(
-                            fontSize: 40
+                    ),
+
+                    TextButton(
+                      onPressed: (){
+                        Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => MyHomePage()),
+                        );
+                      },
+                      child: Container(
+                        height: MediaQuery.of(context).size.height/5,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                            color: Colors.orangeAccent.shade100,
+                            border: Border.all(color:Colors.black38)
                         ),
-                      )
-
-                    ],
-                  ),
-                ),
-              ),
-
-              TextButton(
-                onPressed: (){
-                  Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => MyHomePage()),
-                  );
-                },
-                child: Container(
-                  height: MediaQuery.of(context).size.height/5,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                      color: Colors.orangeAccent.shade100,
-                      border: Border.all(color:Colors.black38)
-                  ),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width/4,
-                        child: const Icon(
-                          Icons.psychology_outlined,
-                          size: 60,
-                          color: Colors.black54,
+                        child: Row(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width/4,
+                              child: const Icon(
+                                Icons.psychology_outlined,
+                                size: 60,
+                                color: Colors.black54,
+                              ),
+                            ),
+                            const Text(
+                              '自主練習',
+                              style: TextStyle(
+                                  fontSize: 40
+                              ),
+                            )
+                          ],
                         ),
                       ),
-                      const Text(
-                        '理解練習',
-                        style: TextStyle(
-                            fontSize: 40
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+
+                  ],
                 ),
               ),
             ],
