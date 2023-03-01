@@ -12,6 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:audioplayers/audioplayers.dart';
 
 int list = 1; //設置ListView.builder顯示的倍數
 
@@ -41,6 +42,8 @@ class NeedPage1 extends StatefulWidget {
 }
 
 class _NeedPage1 extends State<NeedPage1> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,11 +79,9 @@ class _NeedPage1 extends State<NeedPage1> {
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage1()),
-                        );
+                      onPressed: (){
+                        final player = AudioCache();
+                        player.play('hungry.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -104,10 +105,8 @@ class _NeedPage1 extends State<NeedPage1> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage1()),
-                        );
+                        final player = AudioCache();
+                        player.play('thirsty.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -131,10 +130,8 @@ class _NeedPage1 extends State<NeedPage1> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage1()),
-                        );
+                        final player = AudioCache();
+                        player.play('small.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -166,10 +163,8 @@ class _NeedPage1 extends State<NeedPage1> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage1()),
-                        );
+                        final player = AudioCache();
+                        player.play('big.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -193,10 +188,8 @@ class _NeedPage1 extends State<NeedPage1> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage1()),
-                        );
+                        final player = AudioCache();
+                        player.play('change.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -220,10 +213,8 @@ class _NeedPage1 extends State<NeedPage1> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage1()),
-                        );
+                        final player = AudioCache();
+                        player.play('body.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -318,10 +309,8 @@ class _NeedPage2 extends State<NeedPage2> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage2()),
-                        );
+                        final player = AudioCache();
+                        player.play('hot.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -345,10 +334,8 @@ class _NeedPage2 extends State<NeedPage2> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage2()),
-                        );
+                        final player = AudioCache();
+                        player.play('cold.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -372,10 +359,8 @@ class _NeedPage2 extends State<NeedPage2> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage2()),
-                        );
+                        final player = AudioCache();
+                        player.play('faint.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -407,10 +392,8 @@ class _NeedPage2 extends State<NeedPage2> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage2()),
-                        );
+                        final player = AudioCache();
+                        player.play('head.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -434,10 +417,8 @@ class _NeedPage2 extends State<NeedPage2> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage2()),
-                        );
+                        final player = AudioCache();
+                        player.play('stomach.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -461,10 +442,8 @@ class _NeedPage2 extends State<NeedPage2> {
                     height: MediaQuery.of(context).size.height / 5,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => NeedPage2()),
-                        );
+                        final player = AudioCache();
+                        player.play('bed.mp3');
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -495,7 +474,7 @@ class _NeedPage2 extends State<NeedPage2> {
                     border: Border.all(color: Colors.deepOrange.shade800)),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pop(
                       context,
                       MaterialPageRoute(builder: (context) => NeedPage1()),
                     );
