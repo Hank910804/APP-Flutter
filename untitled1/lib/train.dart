@@ -59,13 +59,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width / 4,
                           height: MediaQuery.of(context).size.height / 10,
-                          child: Image.asset(
-                            'lib/image/food.png',
+                          child: const Icon(
+                            Icons.mic,
+                            size: 60,
+                            color: Colors.black87,
                           ),
                         ),
                         const Text(
@@ -93,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               Container(
                                 width: MediaQuery.of(context).size.width/4,
                                 child: Image.asset(
-                                  'lib/image/talk.png',
+                                  'lib/image/name.png',
                                 ),
                               ),
                               const Text(
@@ -159,10 +161,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             Container(
                               width: MediaQuery.of(context).size.width/4,
-                              child: const Icon(
-                                Icons.psychology_outlined,
-                                size: 60,
-                                color: Colors.black54,
+                              child: Image.asset(
+                                'lib/image/talk.png',
                               ),
                             ),
                             const Text(

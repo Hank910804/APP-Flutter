@@ -59,9 +59,9 @@ class _NeedPage1 extends State<NeedPage1> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width / 4,
-                    height: MediaQuery.of(context).size.height / 10,
+                    height: MediaQuery.of(context).size.height / 8,
                     child: Image.asset(
-                      'lib/image/food.png',
+                      'lib/image/need.png',
                     ),
                   ),
                   const Text(
@@ -74,10 +74,11 @@ class _NeedPage1 extends State<NeedPage1> {
                 height: MediaQuery.of(context).size.height / 100,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: (){
                         final player = AudioCache();
@@ -87,10 +88,10 @@ class _NeedPage1 extends State<NeedPage1> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/food.png',
+                              'lib/image/hungry.png',
                             ),
                           ),
                           const Text(
@@ -103,19 +104,20 @@ class _NeedPage1 extends State<NeedPage1> {
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
-                        final player = AudioCache();
-                        player.play('thirsty.mp3');
+                        final player = AudioCache();      //AudioCache初始化
+                        player.play('thirsty.mp3');       //播放口渴音檔
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/water.png',
+                              'lib/image/thirsty.png',
                             ),
                           ),
                           const Text(
@@ -128,6 +130,7 @@ class _NeedPage1 extends State<NeedPage1> {
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
                         final player = AudioCache();
@@ -137,10 +140,10 @@ class _NeedPage1 extends State<NeedPage1> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/pee.png',
+                              'lib/image/small.png',
                             ),
                           ),
                           const Text(
@@ -157,10 +160,11 @@ class _NeedPage1 extends State<NeedPage1> {
                 height: MediaQuery.of(context).size.height / 100,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
                         final player = AudioCache();
@@ -170,10 +174,10 @@ class _NeedPage1 extends State<NeedPage1> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/peo.png',
+                              'lib/image/large.png',
                             ),
                           ),
                           const Text(
@@ -186,6 +190,7 @@ class _NeedPage1 extends State<NeedPage1> {
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
                         final player = AudioCache();
@@ -195,10 +200,10 @@ class _NeedPage1 extends State<NeedPage1> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/peo.png',
+                              'lib/image/change.png',
                             ),
                           ),
                           const Text(
@@ -211,6 +216,7 @@ class _NeedPage1 extends State<NeedPage1> {
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
                         final player = AudioCache();
@@ -220,10 +226,10 @@ class _NeedPage1 extends State<NeedPage1> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/peo.png',
+                              'lib/image/body.png',
                             ),
                           ),
                           const Text(
@@ -235,6 +241,9 @@ class _NeedPage1 extends State<NeedPage1> {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height/30,
               ),
               Container(
                 height: MediaQuery.of(context).size.height / 13,
@@ -250,7 +259,7 @@ class _NeedPage1 extends State<NeedPage1> {
                       MaterialPageRoute(builder: (context) => NeedPage2()),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                       '下一頁',
                     style: TextStyle(
                       fontSize: 30,
@@ -288,9 +297,9 @@ class _NeedPage2 extends State<NeedPage2> {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width / 4,
-                    height: MediaQuery.of(context).size.height / 10,
+                    height: MediaQuery.of(context).size.height / 8,
                     child: Image.asset(
-                      'lib/image/food.png',
+                      'lib/image/need.png',
                     ),
                   ),
                   const Text(
@@ -303,10 +312,11 @@ class _NeedPage2 extends State<NeedPage2> {
                 height: MediaQuery.of(context).size.height / 100,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
                         final player = AudioCache();
@@ -316,10 +326,10 @@ class _NeedPage2 extends State<NeedPage2> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/food.png',
+                              'lib/image/hot.png',
                             ),
                           ),
                           const Text(
@@ -332,6 +342,7 @@ class _NeedPage2 extends State<NeedPage2> {
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
                         final player = AudioCache();
@@ -341,10 +352,10 @@ class _NeedPage2 extends State<NeedPage2> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/water.png',
+                              'lib/image/cold.png',
                             ),
                           ),
                           const Text(
@@ -357,6 +368,7 @@ class _NeedPage2 extends State<NeedPage2> {
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
                         final player = AudioCache();
@@ -366,10 +378,10 @@ class _NeedPage2 extends State<NeedPage2> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/pee.png',
+                              'lib/image/faint.png',
                             ),
                           ),
                           const Text(
@@ -386,10 +398,11 @@ class _NeedPage2 extends State<NeedPage2> {
                 height: MediaQuery.of(context).size.height / 100,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
                         final player = AudioCache();
@@ -399,10 +412,10 @@ class _NeedPage2 extends State<NeedPage2> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/peo.png',
+                              'lib/image/head.png',
                             ),
                           ),
                           const Text(
@@ -415,6 +428,7 @@ class _NeedPage2 extends State<NeedPage2> {
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
                         final player = AudioCache();
@@ -424,10 +438,10 @@ class _NeedPage2 extends State<NeedPage2> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/peo.png',
+                              'lib/image/stomach.png',
                             ),
                           ),
                           const Text(
@@ -440,6 +454,7 @@ class _NeedPage2 extends State<NeedPage2> {
                   ),
                   Container(
                     height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width/3,
                     child: TextButton(
                       onPressed: () {
                         final player = AudioCache();
@@ -449,10 +464,10 @@ class _NeedPage2 extends State<NeedPage2> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width / 4,
+                            width: MediaQuery.of(context).size.width / 3,
                             height: MediaQuery.of(context).size.height / 10,
                             child: Image.asset(
-                              'lib/image/peo.png',
+                              'lib/image/bed.png',
                             ),
                           ),
                           const Text(
@@ -464,6 +479,9 @@ class _NeedPage2 extends State<NeedPage2> {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height/30,
               ),
               Container(
                 height: MediaQuery.of(context).size.height / 13,
@@ -479,7 +497,7 @@ class _NeedPage2 extends State<NeedPage2> {
                       MaterialPageRoute(builder: (context) => NeedPage1()),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     '上一頁',
                     style: TextStyle(
                         fontSize: 30,
