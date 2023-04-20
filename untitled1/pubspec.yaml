@@ -48,6 +48,9 @@ dependencies:
   size_config: ^2.0.3
   framework: ^1.0.3
   audioplayers: ^0.20.1
+  android_alarm_manager_plus: ^2.1.1
+  flutter_sound: ^9.2.13
+  permission_handler: ^9.2.0
 
 
 dev_dependencies:

@@ -15,6 +15,8 @@ import 'package:http/http.dart' as http;
 import 'package:audioplayers/audioplayers.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_sound/flutter_sound.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'dart:typed_data';
 
 void main() {
   runApp(const MyApp());
@@ -42,113 +44,114 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  FlutterSoundRecorder? _recorder;
-  FlutterSoundPlayer? _player;
-  bool _isRecording = false;
-  bool _isPlaying = false;
-
+  var isrecord = 1;
+  final recorder = FlutterSoundRecorder();
+  // bool _isRecorderInitialised = false;
+  // bool get isRecording => recorder!.isRecording;
+  bool isRecorderReady = false;
   @override
   void initState() {
     super.initState();
     initRecorder();
-    _recorder = FlutterSoundRecorder();
-    _player = FlutterSoundPlayer();
   }
-
   @override
   void dispose() {
-    _recorder?.closeRecorder();
-    _player?.closePlayer();
+    // if(!_isRecorderInitialised) return;
+    //
+    // recorder!.closeRecorder();
+    // // recorder = null;
+    // _isRecorderInitialised = false;
+    recorder.closeRecorder();
     super.dispose();
   }
   Future initRecorder() async{
+    // recorder = FlutterSoundRecorder();
+
+    // final statusMic = await Permission.microphone.request();
+    // if(statusMic != PermissionStatus.granted){
+    //   throw RecordingPermissionException('microphone permission');
+    // }
+    // final statusStorage = await Permission.storage.status;
+    // if (!statusStorage.isGranted) {
+    //   await Permission.storage.request();
+    // }
+    // await recorder!.openRecorder();
+    // directoryPath = await _directoryPath();
+    // completePath = await _completePath(directoryPath);
+    // _createDirectory();
+    // _createFile();
+    // _isRecorderInitialised = true;
     final status = await Permission.microphone.request();
     if(status != PermissionStatus.granted){
       throw 'Microphone permission not granted';
     }
+    await recorder.openRecorder();
+    recorder.setSubscriptionDuration(
+      const Duration(milliseconds: 500),
+    );
   }
-
-  Future<String> _getFilePath() async {
-    final appDir = await getApplicationDocumentsDirectory();  //抓取手機路徑
-    final filePath = '${appDir.path}/audio.wav';
-    return filePath;
+  Future record() async{
+    // if(!_isRecorderInitialised) return;
+    // print("Path where the file will be : "+completePath);
+    // await recorder!.startRecorder(
+    //   toFile: completePath,
+    //   numChannels : 1,
+    //   sampleRate: 44100,
+    // );
+    await recorder.startRecorder(toFile: 'audio.wav',codec: Codec.pcm16WAV);
   }
+  Future stop() async{
+    // if(!_isRecorderInitialised) return;
+    // var s = await recorder!.stopRecorder();
+    // File f = File(completePath);
+    // print("The created file : $f");
+    final path = await recorder.stopRecorder();
+    final audioFile = File(path!);
+    print('Recorded audio: $audioFile');
+  }
+  Future toggleRecording() async{
+    if(recorder!.isStopped){
+      await record();
+    }else{
+      await stop();
 
-  Future<void> _startRecording() async {
-    try {
-      print('錯誤1');
-      final filePath = await _getFilePath();
-      print('錯誤2 ${filePath}');
-      await _recorder?.openRecorder();
-      print('錯誤3');
-      await _recorder?.startRecorder(
-        toFile: filePath, //錄製音檔的儲存位置
-        codec: Codec.pcm16WAV,  //音檔的格式
-      );
-      print('錯誤4');
-      setState(() {
-        _isRecording = true;
-      });
-      print('錯誤5');
-    } catch (e) {
-      print(e);
     }
   }
-
-  Future<void> _stopRecording() async {
-    try {
-      print('錯誤一');
-      await _recorder?.stopRecorder();
-      print('錯誤二');
-      await _recorder?.closeRecorder();
-      print('錯誤三');
-      _saveRecording();
-      print('錯誤四}');
-      setState(() {
-        _isRecording = false;
+/*
+  String completePath = "";
+  String directoryPath = "";
+  Future<String> _completePath(String directory) async {
+    var fileName = _fileName();
+    return "$directory$fileName";
+  }
+  Future<String> _directoryPath() async {
+    var directory = await getExternalStorageDirectory();
+    var directoryPath = directory!.path;
+    return "$directoryPath/records/";
+  }
+  String _fileName() {
+    return "record.wav";
+  }
+  Future _createFile() async {
+    File(completePath)
+        .create(recursive: true)
+        .then((File file) async {
+      //write to file
+      Uint8List bytes = await file.readAsBytes();
+      file.writeAsBytes(bytes);
+      print("FILE CREATED AT : "+file.path);
+    });
+  }
+  void _createDirectory() async {
+    bool isDirectoryCreated = await Directory(directoryPath).exists();
+    if (!isDirectoryCreated) {
+      Directory(directoryPath).create()
+          .then((Directory directory) {
+        print("DIRECTORY CREATED AT : " +directory.path);
       });
-      print('錯誤五');
-    } catch (e) {
-      print('錯誤六');
-      print(e);
     }
   }
-
-  Future<void> _startPlaying() async {
-    try {
-      final filePath = await _getFilePath();
-      await _player?.openPlayer();
-      await _player?.startPlayer(fromURI: filePath);
-      setState(() {
-        _isPlaying = true;
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  Future<void> _stopPlaying() async {
-    try {
-      await _player?.stopPlayer();
-      await _player?.closePlayer();
-      setState(() {
-        _isPlaying = false;
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
-
-  Future<void> _saveRecording() async {
-    final filePath = await _getFilePath();
-    print('${filePath}');
-    final file = File(filePath);
-    print("${file}");
-    final bytes = await file.readAsBytes();
-    final savedFile = File('/path/to/saved/file.wav');  //設定儲存的路徑
-    await file.writeAsBytes(bytes);  //將設定的路徑，存入手機內
-  }
-
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     const Text(
                       '自主言語',
                       style:
-                          TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -235,54 +238,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 100,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ClipOval(
-                      child: Container(
-                        color: Colors.redAccent,
-                        width: 80,
-                        height: 80,
-                        child: ElevatedButton(
-                          onPressed:() async{
-                            if(_isRecording){
-                              _stopRecording();
-                            }else{
-                              _startRecording();
-                            }
-                          },
-                          child:Icon(
-                            _isRecording? Icons.stop:Icons.mic,
-                            size: 50,
-                            color: Colors.black87,
-                          ),
-                        ),
-                      ),
+                ElevatedButton(
+                    child: Icon(
+                      recorder.isRecording ? Icons.stop : Icons.mic,
+                      size: 80,
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width / 100,),
-                    ClipOval(
-                      child: Container(
-                        color: Colors.redAccent,
-                        width: 80,
-                        height: 80,
-                        child: ElevatedButton(
-                          onPressed:() async{
-                            if(_isPlaying){
-                              _stopPlaying();
-                            }else{
-                              _startPlaying();
-                            }
-                          },
-                          child:Icon(
-                            _isPlaying? Icons.stop:Icons.play_arrow,
-                            size: 50,
-                            color: Colors.black87,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                    onPressed: () async{
+                      if(recorder.isRecording){
+                        await stop();
+                      }else{
+                        await record();
+                      }
+                      setState(() {});
+                    }
+                )
+
                 // ClipOval(
                 //   child: Container(
                 //     color: Colors.redAccent,
@@ -290,14 +260,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 //     height: 80,
                 //     child: ElevatedButton(
                 //       onPressed:() async{
-                //         if(_isRecording){
-                //           stop();
+                //         print('test,$isrecord');
+                //         if(isrecord == 1){
+                //           isrecord = 0;
                 //         }else{
-                //           record();
+                //           isrecord = 1;
                 //         }
                 //       },
                 //       child:Icon(
-                //         _isRecording? Icons.stop:Icons.mic,
+                //         isrecord == 0? Icons.stop:Icons.mic,
                 //         size: 50,
                 //         color: Colors.black87,
                 //       ),

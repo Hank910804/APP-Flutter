@@ -11,6 +11,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:dio/dio.dart';
 
+
 TextEditingController pust_string_controller = TextEditingController();
 TextEditingController pust_string_controller01 = TextEditingController();
 int list = 1;
@@ -166,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                             const Text(
-                              '自主練習',
+                              '自主言語',
                               style: TextStyle(
                                   fontSize: 40
                               ),
